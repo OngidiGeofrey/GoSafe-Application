@@ -3,6 +3,10 @@ package com.ongidideveloper.gosafe;
 public class Police {
     private String name,location,emergency_contacts;
 
+    public Police(){
+
+    }
+
     public Police(String name, String location, String emergency_contacts) {
         this.name = name;
         this.location = location;
