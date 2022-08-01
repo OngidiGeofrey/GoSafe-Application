@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "812994037577",
+    "project_id": "gosafe-aee8f",
+    "storage_bucket": "gosafe-aee8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812994037577:android:51849ad1cfa967ee163c98",
+        "android_client_info": {
+          "package_name": "com.ongidideveloper.gosafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812994037577-103scgnfprbnliv7v4bchks6rvv9c4gr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdhgX6z945aAOLa7XYSBLPs0MjAOAn760"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812994037577-103scgnfprbnliv7v4bchks6rvv9c4gr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="General">
+
+    <menu>
+
+        <item
+            android:id="@+id/admin_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home" />
+    </menu>
+
+</item>
+
+    <item android:title="Users">
+
+        <menu>
+
+            <item
+                android:id="@+id/add_user"
+                android:icon="@drawable/ic_baseline_person_24"
+                android:title="Add User"/>
+
+            <item
+                android:id="@+id/view_users"
+                android:icon="@drawable/history_icon"
+                android:title="View users"/>
+        </menu>
+
+    </item>
+
+
+    <item android:title="Police">
+
+        <menu>
+
+            <item
+                android:id="@+id/add_police_station"
+                android:icon="@drawable/ic_baseline_person_add_alt_1_24"
+                android:title="Add Police station"/>
+
+            <item
+                android:id="@+id/view_police"
+                android:icon="@drawable/history_icon"
+                android:title="View Police stations"/>
+        </menu>
+
+    </item>
+    <item android:title="Hospital">
+
+        <menu>
+
+            <item
+                android:id="@+id/add_hospital"
+                android:icon="@drawable/ic_baseline_person_24"
+                android:title="Add Hospital"/>
+
+            <item
+                android:id="@+id/view_hospital"
+                android:icon="@drawable/history_icon"
+                android:title="View Hospitals"/>
+        </menu>
+
+    </item>
+
+    <item android:title="Reports">
+
+        <menu>
+
+            <item
+                android:id="@+id/view_reports"
+                android:icon="@drawable/history_icon"
+                android:title="View Victims"/>
+
+
+        </menu>
+
+    </item>
+
+
+    <item android:title="Session">
+
+        <menu>
+
+            <item
+                android:id="@+id/end_session"
+                android:icon="@drawable/logout_icon"
+                android:title="Logout"/>
+
+
+        </menu>
+
+    </item>
+
+
+
+</menu>

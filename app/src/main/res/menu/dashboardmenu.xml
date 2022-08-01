@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="General" >
+        <menu>
+            <item
+                android:id="@+id/home"
+                android:icon="@drawable/ic_baseline_home_24"
+                android:title="Home" />
+            <item
+                android:id="@+id/profile"
+                android:icon="@drawable/ic_baseline_group_add_24"
+                android:title="Profile" />
+        </menu>
+
+
+    </item>
+
+
+    <item android:title="Communication" >
+        <menu>
+            <item
+                android:id="@+id/emergence"
+                android:icon="@drawable/emergecy_icon"
+                android:title="Emergency Contacts" />
+
+        </menu>
+
+
+    </item>
+
+    <item android:title="Other" >
+        <menu>
+
+            <item
+                android:id="@+id/reports"
+                android:icon="@drawable/history_icon"
+                android:title="History" />
+            <item
+                android:id="@+id/share"
+                android:icon="@drawable/ic_baseline_share_24"
+
+                android:title="Share" />
+
+            <item
+                android:id="@+id/help"
+                android:icon="@drawable/ic_baseline_live_help_24"
+                android:title="Help" />
+
+        </menu>
+
+
+    </item>
+
+    <item android:title="Sign Out" >
+        <menu>
+
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/logout_icon"
+                android:title="Logout" />
+
+
+        </menu>
+
+
+    </item>
+</menu>
