@@ -20,20 +20,23 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
-    public class Login extends AppCompatActivity {
-    private EditText emailAdress,Password;
+public class Login extends AppCompatActivity {
+    private TextInputEditText emailAddress,Password;
     private ProgressDialog progressDialog;
     private Button btnLogin;
     private TextView forgot,signUp;
     private FirebaseAuth fAuth;
     private FirebaseUser fuser;
-    private final String adminID="67r70zXOxvZU4SB15pobPIpmGco2";
+    private TextInputLayout layout_email,layout_password;
+
 
 
 
@@ -42,9 +45,9 @@ import java.util.Locale;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btnLogin=findViewById(R.id.btnLogin);
-        signUp=findViewById(R.id.textSignUp);
-        forgot=findViewById(R.id.textReset);
+        btnLogin=findViewById(R.id.btnSign_in);
+        signUp=findViewById(R.id.textViewsign_up);
+        forgot=findViewById(R.id.forgotPassword);
         fAuth=FirebaseAuth.getInstance();
         progressDialog=new ProgressDialog(this);
 
@@ -69,45 +72,45 @@ import java.util.Locale;
             public void onClick(View v) {
 
 
-           final EditText resetMail=new EditText(v.getContext());
-            final AlertDialog.Builder passwordResetDialoq =new AlertDialog.Builder(v.getContext());
-            passwordResetDialoq.setTitle("Enter your Email To reset password");
-            passwordResetDialoq.setView(resetMail);
+                final EditText resetMail=new EditText(v.getContext());
+                final AlertDialog.Builder passwordResetDialoq =new AlertDialog.Builder(v.getContext());
+                passwordResetDialoq.setTitle("Enter your Email To reset password");
+                passwordResetDialoq.setView(resetMail);
 
 
-          passwordResetDialoq.setPositiveButton("SEND", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    progressDialog.show();
-                    progressDialog.setMessage("Please Wait ...");
-                    progressDialog.setCanceledOnTouchOutside(false);
+                passwordResetDialoq.setPositiveButton("SEND", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        progressDialog.show();
+                        progressDialog.setMessage("Please Wait ...");
+                        progressDialog.setCanceledOnTouchOutside(false);
 
-                    String mail=resetMail.getText().toString().toLowerCase().trim();
+                        String mail=resetMail.getText().toString().toLowerCase().trim();
 
-                    fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            progressDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "Reset Link is sent to your Email", Toast.LENGTH_SHORT).show();
+                        fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                progressDialog.dismiss();
+                                Toast.makeText(getApplicationContext(), "Reset Link is sent to your Email", Toast.LENGTH_SHORT).show();
 
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "Oops ! "+e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                progressDialog.dismiss();
+                                Toast.makeText(getApplicationContext(), "Oops ! "+e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
 
-                }
-            });
-          passwordResetDialoq.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-              @Override
-              public void onClick(DialogInterface dialog, int which) {
-                  //close the dialog
-              }
-          });
-            passwordResetDialoq.create().show();
+                    }
+                });
+                passwordResetDialoq.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //close the dialog
+                    }
+                });
+                passwordResetDialoq.create().show();
             }
         });
 
@@ -123,24 +126,27 @@ import java.util.Locale;
 
     private void validate_details()
     {
-        emailAdress=findViewById(R.id.TextEmailAddressLogin);
-        Password=findViewById(R.id.TextPasswordLogin);
+        emailAddress=findViewById(R.id.textEditText_login_email);
+        Password=findViewById(R.id.textEditTextPassword_login);
+        layout_email=findViewById(R.id.textInputLayout_login_email);
+        layout_password=findViewById(R.id.textInputLayout_password_login);
 
 
 
 
 
-        String email=emailAdress.getText().toString().toLowerCase().trim();
+
+        String email=emailAddress.getText().toString().toLowerCase().trim();
         String password=Password.getText().toString().trim();
         if(TextUtils.isEmpty(email))
         {
-            emailAdress.setError("Email is Required");
+            layout_email.setError("Email is Required");
             return;
         }
 
-       if(TextUtils.isEmpty(password))
+        if(TextUtils.isEmpty(password))
         {
-            Password.setError("Password is Required");
+            layout_password.setError("Password is Required");
             return;
         }
 
@@ -196,7 +202,6 @@ import java.util.Locale;
                 }
             });
         }
-
 
     }
 
