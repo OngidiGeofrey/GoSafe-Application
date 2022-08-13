@@ -95,7 +95,7 @@ public class Register extends AppCompatActivity {
 
         String first_name=fname.getText().toString().toLowerCase().trim();
         String last_name=lname.getText().toString().toLowerCase().trim();
-        String full_name=last_name+" "+last_name;
+        String full_name=first_name.concat(" "+last_name);
         String emailAddress=email.getText().toString().toLowerCase().trim();
         String phone_number=phone.getText().toString().trim();
         String password=pass.getText().toString().trim();
@@ -179,7 +179,7 @@ public class Register extends AppCompatActivity {
                             public void onSuccess(Void unused) {
 
                                 User user=new User(full_name,phone_number,emailAddress);
-                                databaseReference.child(emailAddress).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                databaseReference.child(phone_number).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
 
