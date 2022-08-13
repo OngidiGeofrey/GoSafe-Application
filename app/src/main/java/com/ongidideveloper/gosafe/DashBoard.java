@@ -48,6 +48,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -80,6 +81,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 Button stop;
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -334,9 +336,28 @@ Button stop;
                           );
 
                           //set latitude and Longitude
-                          Toast.makeText(getApplicationContext(), "Latitude "+addresses.get(0).getLatitude()+"" +
+
+                          double longitude=addresses.get(0).getLongitude();
+                          double latitude=addresses.get(0).getLatitude();
+                          String country_name=addresses.get(0).getCountryName();
+                          String country_admin_name=addresses.get(0).getAdminArea();
+                          String link=addresses.get(0).getAddressLine(0)+"https://maps.google.com/?q= "+addresses.get(0).getLatitude()+","+addresses.get(0).getLongitude();
+                          String current_user=firebaseAuth.getCurrentUser().getEmail();
+
+                        AlertDialog.Builder message_dialoq =new AlertDialog.Builder(getApplicationContext());
+                        message_dialoq.setTitle("Emergency Notification");
+                        message_dialoq.setMessage("");
+                        Toast.makeText(getApplicationContext(), "email "+current_user, Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
+                         /* Toast.makeText(getApplicationContext(), "Latitude "+addresses.get(0).getLatitude()+"" +
                                   "\nLongitude :"+addresses.get(0).getLongitude()+"\n Country : "+addresses.get(0).getCountryName()
-                                  +"\n Address :"+addresses.get(0).getAdminArea()+", "+addresses.get(0).getAddressLine(0)+" https://maps.google.com/?q= "+addresses.get(0).getLatitude()+","+addresses.get(0).getLongitude(), Toast.LENGTH_SHORT).show();
+                                  +"\n Address :"+addresses.get(0).getAdminArea()+", "+addresses.get(0).getAddressLine(0)+" https://maps.google.com/?q= "+addresses.get(0).getLatitude()+","+addresses.get(0).getLongitude(), Toast.LENGTH_SHORT).show();*/
                       } catch (IOException e) {
                           e.printStackTrace();
                       }
