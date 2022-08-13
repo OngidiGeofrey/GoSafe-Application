@@ -346,8 +346,28 @@ Button stop;
 
                         AlertDialog.Builder message_dialoq =new AlertDialog.Builder(getApplicationContext());
                         message_dialoq.setTitle("Emergency Notification");
-                        message_dialoq.setMessage("");
-                        Toast.makeText(getApplicationContext(), "email "+current_user, Toast.LENGTH_SHORT).show();
+                        message_dialoq.setMessage("Are you really in trouble send alert to your primary contacts?");
+                        message_dialoq.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                // dismiss
+
+
+                            }
+                        });
+
+                        message_dialoq.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                // Fetch all emergency contact for the current user from database
+
+                                // Send SMS
+
+                            }
+                        });
+
+
+                       // Toast.makeText(getApplicationContext(), "email "+current_user, Toast.LENGTH_SHORT).show();
 
 
 
