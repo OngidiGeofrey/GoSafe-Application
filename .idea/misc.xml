@@ -4,12 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/drawable/card_view_background.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/drawable/ic_baseline_history_edu_24.xml" value="0.24114583333333334" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.24114583333333334" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.24114583333333334" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/drawable/ic_baseline_view_list_24.xml" value="0.24114583333333334" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/drawable/ic_home.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/drawable/ic_person.xml" value="0.2351851851851852" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.225" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/layout/activity_dash_board.xml" value="0.225" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/layout/activity_login.xml" value="0.225" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/layout/activity_register.xml" value="0.20925925925925926" />
-        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/layout/admin_home_fragment.xml" value="0.225" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/layout/admin_home_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/layout/fragment_help.xml" value="0.225" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/layout/fragment_home.xml" value="0.225" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.24114583333333334" />
