@@ -17,7 +17,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class Admin_Home_Fragment extends Fragment {
 
-    CardView cardView_home, cardView_user,cardView_logout,cardView_settings,cardView_add_user,cardView_victim;
+    CardView cardView_home, cardView_user,cardView_logout,
+            cardView_settings,cardView_add_user,cardView_victim;
 
     private onFragmentEmergenceButtonClicked listener;
     @Nullable
@@ -34,6 +35,7 @@ public class Admin_Home_Fragment extends Fragment {
         cardView_add_user=view.findViewById(R.id.card_view_user_adds);
 
         cardView_user=view.findViewById(R.id.card_view_user);
+        cardView_logout=view.findViewById(R.id.card_view_logout);
         cardView_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +76,15 @@ public class Admin_Home_Fragment extends Fragment {
                 listener.load_view_users();
             }
         });
+
+        cardView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.logout_fragment();
+            }
+        });
+
+
         return view;
     }
 
