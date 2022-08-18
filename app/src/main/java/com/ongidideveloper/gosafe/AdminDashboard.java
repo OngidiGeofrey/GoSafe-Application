@@ -512,6 +512,7 @@ public class AdminDashboard extends AppCompatActivity implements
 
             }
         });
+        alertDialogue.show();
 
 
         }
