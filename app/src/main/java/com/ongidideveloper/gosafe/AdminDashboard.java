@@ -2,8 +2,10 @@ package com.ongidideveloper.gosafe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
@@ -11,7 +13,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -41,19 +46,21 @@ public class AdminDashboard extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
         Admin_Add_User_Fragment.onFragmentBtnSelected,
         Admin_Add_PoliceStation_Fragment.onFragmentBtnSelected,
-        Admin_Add_Hospital.onFragmentBtnSelected
+        Admin_Add_Hospital.onFragmentBtnSelected, Admin_Home_Fragment.onFragmentEmergenceButtonClicked
     {
 
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
+
     NavigationView navigationView;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
     // instance variables of Police Fragment
     private Button addPolice;
@@ -73,6 +80,7 @@ public class AdminDashboard extends AppCompatActivity implements
 
     // progress dialog
     private ProgressDialog progressDialog;
+
 
 
 
@@ -110,6 +118,13 @@ public class AdminDashboard extends AppCompatActivity implements
         firebaseAuth=FirebaseAuth.getInstance();
         //initialize progress Dialog
         progressDialog=new ProgressDialog(this);
+
+
+
+
+
+
+
 
 
 
@@ -430,6 +445,83 @@ public class AdminDashboard extends AppCompatActivity implements
 
 
 
+
+        }
+
+        @Override
+        public void load_home_fragment() {
+
+            fragmentManager=getSupportFragmentManager();
+            fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment, new Admin_Home_Fragment());
+            fragmentTransaction.commit();
+
+        }
+
+        @Override
+        public void load_add_fragment() {
+
+            fragmentManager=getSupportFragmentManager();
+            fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment, new Admin_Add_User_Fragment());
+            fragmentTransaction.commit();
+
+
+        }
+
+        @Override
+        public void load_victim_fragment() {
+
+            fragmentManager=getSupportFragmentManager();
+            fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment, new admin_View_Victim() );
+            fragmentTransaction.commit();
+
+        }
+
+        @Override
+        public void logout_fragment() {
+
+        AlertDialog.Builder alertDialogue=new AlertDialog.Builder(getApplicationContext());
+        alertDialogue.setTitle("End Session");
+        alertDialogue.setMessage("Are you sure you want to logout?");
+        alertDialogue.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                // dismiss;
+
+            }
+        });
+        alertDialogue.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                firebaseAuth.getInstance().signOut();
+                Toast.makeText(getApplicationContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(getApplicationContext(),Login.class));
+                        finish();
+
+
+                    }
+                },2000);
+
+
+            }
+        });
+
+
+        }
+
+        @Override
+        public void load_view_users() {
+            fragmentManager=getSupportFragmentManager();
+            fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment, new Admin_View_Registered_User() );
+            fragmentTransaction.commit();
 
         }
     }
