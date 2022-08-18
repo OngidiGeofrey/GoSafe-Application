@@ -14,8 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
         android:gravity="center"
+        android:layout_marginTop="85dp"
         android:text="Admin Dashboard"
-        android:textColor="@color/black"
+
+        android:textColor="@color/white"
         android:textSize="24dp"
         android:textStyle="bold"
 
