@@ -497,11 +497,15 @@ public class AdminDashboard extends AppCompatActivity implements
             alertDialogue.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+                    //log out user
                     FirebaseAuth.getInstance().signOut();
 
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
+                            // display success message
+                            Toast.makeText(getApplicationContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
+
                             startActivity(new Intent(getApplicationContext(),Login.class));
 
                         }
