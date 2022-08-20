@@ -22,14 +22,60 @@ import java.util.ArrayList;
 
 public class Admin_View_Police_Station extends Fragment {
 
+
+    RecyclerView recyclerView;
+    DatabaseReference databaseReference;
+    PoliceAdapter policeAdapter;
+    ArrayList<Police> list;
+    View view;
+    FirebaseDatabase firebaseDatabase;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.admin_view_police_station,container,false);
+
+        recyclerView=view.findViewById(R.id.list_of_police_stations);
+        policeAdapter=new PoliceAdapter(view.getContext(),list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(policeAdapter);
+        // recyclerView.setHasFixedSize(true);
+
+
+
+
         return view;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        firebaseDatabase= FirebaseDatabase.getInstance();
+
+        databaseReference=firebaseDatabase.getReference().child("Police");
+
+        list =new ArrayList<>();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    Police police = dataSnapshot.getValue(Police.class);
+                    list.add(police);
+                }
+                policeAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
 
+
+
+    }
 }

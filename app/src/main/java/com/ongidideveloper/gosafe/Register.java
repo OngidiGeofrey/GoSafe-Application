@@ -95,7 +95,7 @@ public class Register extends AppCompatActivity {
 
         String first_name=fname.getText().toString().toLowerCase().trim();
         String last_name=lname.getText().toString().toLowerCase().trim();
-        String full_name=first_name.concat(" "+last_name);
+        String full_name=last_name+" "+last_name;
         String emailAddress=email.getText().toString().toLowerCase().trim();
         String phone_number=phone.getText().toString().trim();
         String password=pass.getText().toString().trim();

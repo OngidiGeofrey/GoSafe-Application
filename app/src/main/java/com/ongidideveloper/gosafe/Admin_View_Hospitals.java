@@ -39,7 +39,7 @@ public class Admin_View_Hospitals extends Fragment {
         hospitalAdapter=new HospitalAdapter(view.getContext(),list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(hospitalAdapter);
-       // recyclerView.setHasFixedSize(true);
+        // recyclerView.setHasFixedSize(true);
 
 
 

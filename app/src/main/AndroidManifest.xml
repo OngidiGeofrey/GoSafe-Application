@@ -10,17 +10,18 @@
 
     <application
         android:fullBackupContent="true"
-
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GoSafe">
         <activity
+            android:name=".Register"
+            android:exported="true" />
+        <activity
             android:name=".AdminDashboard"
             android:exported="true"
-            android:theme="@style/Theme.GoSafe.NoActionBar."
-            />
+            android:theme="@style/Theme.GoSafe.NoActionBar." />
         <activity
             android:name=".DashBoard"
             android:exported="true"
@@ -31,9 +32,6 @@
             android:exported="true" />
         <activity
             android:name=".Reset_Password"
-            android:exported="true" />
-        <activity
-            android:name=".Register"
             android:exported="true" />
         <activity
             android:name=".Login"
