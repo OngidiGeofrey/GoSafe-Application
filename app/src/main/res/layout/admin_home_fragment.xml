@@ -13,8 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
-        android:gravity="center"
         android:layout_marginTop="85dp"
+        android:gravity="center"
         android:text="Admin Dashboard"
 
         android:textColor="@color/white"
@@ -23,19 +23,19 @@
 
 
         />
-  <GridLayout
 
-
-
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/txtDashboard"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+
         android:columnCount="2"
-        android:rowCount="3">
+        android:rowCount="4">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -61,14 +61,14 @@
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
-                    app:cardCornerRadius="8dp"
 
-                    android:id="@+id/card_view_home"
+                    app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
 
                     <LinearLayout
@@ -98,6 +98,7 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_user_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
@@ -106,7 +107,6 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             app:cardCornerRadius="8dp"
-            android:id="@+id/card_view_user_add"
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true"
 
@@ -121,10 +121,10 @@
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_user_adds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    android:id="@+id/card_view_user_adds"
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     app:cardCornerRadius="8dp"
@@ -157,11 +157,11 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_victim_users"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_rowWeight="1"
-            android:id="@+id/card_view_victim_users"
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -180,10 +180,10 @@
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_victim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    android:id="@+id/card_view_victim"
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     app:cardCornerRadius="8dp"
@@ -216,14 +216,14 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:layout_columnWeight="1"
 
-            android:id="@+id/card_view_user"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
             app:cardCornerRadius="8dp"
 
@@ -279,10 +279,10 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="2"
-            android:id="@+id/card_view_settings"
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
@@ -337,12 +337,12 @@
 
 
         <androidx.cardview.widget.CardView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:id="@+id/logout"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             app:cardCornerRadius="8dp"
@@ -360,12 +360,12 @@
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
-                    android:id="@+id/card_view_logout"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
 
@@ -392,8 +392,20 @@
 
 
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
 
-  </GridLayout>
+
+
+
+
+
+
+
+    </GridLayout>
+
+
+
+
 </RelativeLayout>
