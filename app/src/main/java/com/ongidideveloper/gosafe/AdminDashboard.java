@@ -2,8 +2,8 @@ package com.ongidideveloper.gosafe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AlertDialogLayout;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -482,40 +483,32 @@ public class AdminDashboard extends AppCompatActivity implements
         @Override
         public void logout_fragment() {
 
-        AlertDialog.Builder alertDialogue=new AlertDialog.Builder(getApplicationContext());
-        alertDialogue.setTitle("End Session");
-        alertDialogue.setMessage("Are you sure you want to logout?");
-        alertDialogue.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                // dismiss;
-
-            }
-        });
-        alertDialogue.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                firebaseAuth.getInstance().signOut();
-                Toast.makeText(getApplicationContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivity(new Intent(getApplicationContext(),Login.class));
-                        finish();
+            AlertDialog.Builder alertDialogue=new AlertDialog.Builder(this);
+            alertDialogue.setTitle("END SESSION ");
+            alertDialogue.setMessage("Are you sure you want to logout?");
+            alertDialogue.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // dismiss the dialogue box
+                }
+            });
 
 
-                    }
-                },2000);
+            alertDialogue.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    FirebaseAuth.getInstance().signOut();
 
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(new Intent(getApplicationContext(),Login.class));
 
-            }
-        });
-        alertDialogue.show();
-
-
-        }
+                        }
+                    },2000);
+                }
+            });
+            alertDialogue.show(); }
 
         @Override
         public void load_view_users() {

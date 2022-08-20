@@ -79,7 +79,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     //LongOperation recordAudioSync=null;
 
 
-Button stop;
+    Button stop;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
 
