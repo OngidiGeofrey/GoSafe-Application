@@ -75,6 +75,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
      FragmentTransaction fragmentTransaction;
      LocationManager locationManager;
      FusedLocationProviderClient fusedLocationProviderClient;
+     ProgressDialog progressDialog;
 
 
 
@@ -106,7 +107,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 
     EditText profileName,guardianName,profilePhone,guardianPhone;
-    ProgressDialog progressDialog;
+
     String currentUser;
 
 
@@ -332,6 +333,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     @Override
     public void getLocation() {
        // Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+
       if(ActivityCompat.checkSelfPermission(DashBoard.this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED)
       {
           // when permission is granted
@@ -380,6 +382,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         message_dialoq.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+
+
+
                                 // Send information to guardian Contacts
                                 reference=rootNode.getReference("Guardian");
                              reference.addValueEventListener(new ValueEventListener() {
@@ -467,8 +472,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 
 
-
-
                                 // send to nearest Hospitals
 
                                 reference=rootNode.getReference("Hospital");
@@ -484,7 +487,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                                             String[] county=country_admin_name.split(" ");
                                             number=hospital.getEmergency_contacts();
 
-                                            if(county[0].equalsIgnoreCase(str[0]))
+                                          if(county[0].equalsIgnoreCase(str[0]))
                                             {
                                                 // send sms
 
@@ -492,8 +495,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
                                                 String action="Please take an immediate action to rescue the victims \n. Regards\n\n Gosafe App";
                                                 SmsManager smsManager=SmsManager.getDefault();
-                                                smsManager.sendTextMessage(number,null,""+police_text+" "+link+" "+action,null,null);
-                                                Toast.makeText(getApplicationContext(), "Notification message sent to nearest police station \n sending to nearest Hospital", Toast.LENGTH_SHORT).show();
+                                                smsManager.sendTextMessage(number,null,""+link,null,null);
+                                                Toast.makeText(getApplicationContext(), "Notification message sent to nearest Hospital \n sending to nearest Hospital", Toast.LENGTH_SHORT).show();
 
                                             }
 
@@ -507,6 +510,15 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
                                     }
                                 });
+
+                                // save details of victim and the location to firebase
+
+
+
+
+
+
+
 
 
 
