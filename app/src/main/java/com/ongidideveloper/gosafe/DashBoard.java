@@ -91,6 +91,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     String number;
     String police_town;
 
+    String hospital_town;
+
 
     Button stop;
     FirebaseAuth firebaseAuth;
@@ -462,6 +464,54 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
                                     }
                                 });
+
+
+
+
+
+                                // send to nearest Hospitals
+
+                                reference=rootNode.getReference("Hospital");
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                        for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                                          Hospital hospital=dataSnapshot.getValue(Hospital.class);
+
+                                           hospital_town=hospital.getLocation();
+                                            String[] str=hospital_town.split(" ");
+                                            String[] county=country_admin_name.split(" ");
+                                            number=hospital.getEmergency_contacts();
+
+                                            if(county[0].equalsIgnoreCase(str[0]))
+                                            {
+                                                // send sms
+
+                                                String police_text="It seems an Accident has occured around following location\n";
+
+                                                String action="Please take an immediate action to rescue the victims \n. Regards\n\n Gosafe App";
+
+
+
+                                                SmsManager smsManager=SmsManager.getDefault();
+                                                smsManager.sendTextMessage(number,null,""+police_text+" "+link+" "+action,null,null);
+                                                Toast.makeText(getApplicationContext(), "Notification message sent to nearest police station \n sending to nearest Hospital", Toast.LENGTH_SHORT).show();
+
+                                            }
+
+                                        }
+
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+
 
 
 
