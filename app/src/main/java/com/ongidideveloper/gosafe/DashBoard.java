@@ -89,6 +89,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     String country_admin_name;
     String link;
     String current_user;
+    String address_line;
     String number;
     String police_town;
 
@@ -362,6 +363,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                            latitude=addresses.get(0).getLatitude();
                            country_name=addresses.get(0).getCountryName();
                            country_admin_name=addresses.get(0).getAdminArea();
+                          address_line=addresses.get(0).getAddressLine(0);
                           link="Latitude "+addresses.get(0).getLatitude()+"" +
                                   "\nLongitude :"+addresses.get(0).getLongitude()+"\n Country : "+addresses.get(0).getCountryName()
                                   +"\n Address :"+addresses.get(0).getAdminArea()+", "+addresses.get(0).getAddressLine(0)+" https://maps.google.com/?q= "+addresses.get(0).getLatitude()+","+addresses.get(0).getLongitude();
@@ -512,6 +514,25 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                                 });
 
                                 // save details of victim and the location to firebase
+                                reference=rootNode.getReference("Victim");
+
+
+
+                                Victim victim=new Victim(latitude,longitude,link,address_line,country_admin_name);
+
+                                reference.child(country_name).setValue(victim).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getApplicationContext(), "Error occurred "+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                    }
+                                });
+
 
 
 
