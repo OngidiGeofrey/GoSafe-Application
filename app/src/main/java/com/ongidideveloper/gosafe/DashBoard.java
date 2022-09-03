@@ -382,7 +382,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 // Send information to guardian Contacts
                                 reference=rootNode.getReference("Guardian");
-                              /*  reference.addValueEventListener(new ValueEventListener() {
+                             reference.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         for(DataSnapshot dataSnapshot:snapshot.getChildren()){
@@ -420,7 +420,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                                         Toast.makeText(getApplicationContext(), "Error occured", Toast.LENGTH_SHORT).show();
 
                                     }
-                                });*/
+                                });
 
                                 // Send information to nearest Police stations
 
