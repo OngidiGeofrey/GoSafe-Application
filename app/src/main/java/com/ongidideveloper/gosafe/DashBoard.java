@@ -30,6 +30,7 @@ import android.media.MediaRecorder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telephony.SmsManager;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -49,8 +50,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -77,6 +81,15 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
      DrawerLayout drawerLayout;
      int RECORD_AUDIO=0;
     //LongOperation recordAudioSync=null;
+
+    double longitude;
+    double latitude;
+    String country_name;
+    String country_admin_name;
+    String link;
+    String current_user;
+    String number;
+    String police_town;
 
 
     Button stop;
@@ -129,6 +142,10 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
          rootNode=FirebaseDatabase.getInstance();
          progressDialog=new ProgressDialog(this);
+
+        // request permission to send and receive sms
+        ActivityCompat.requestPermissions(DashBoard.this, new String[]{Manifest.permission.READ_SMS,Manifest.permission.SEND_SMS},PackageManager.PERMISSION_GRANTED);
+
 
 
     }
@@ -337,14 +354,16 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
                           //set latitude and Longitude
 
-                          double longitude=addresses.get(0).getLongitude();
-                          double latitude=addresses.get(0).getLatitude();
-                          String country_name=addresses.get(0).getCountryName();
-                          String country_admin_name=addresses.get(0).getAdminArea();
-                          String link=addresses.get(0).getAddressLine(0)+"https://maps.google.com/?q= "+addresses.get(0).getLatitude()+","+addresses.get(0).getLongitude();
-                          String current_user=firebaseAuth.getCurrentUser().getEmail();
+                           longitude=addresses.get(0).getLongitude();
+                           latitude=addresses.get(0).getLatitude();
+                           country_name=addresses.get(0).getCountryName();
+                           country_admin_name=addresses.get(0).getAdminArea();
+                          link="Latitude "+addresses.get(0).getLatitude()+"" +
+                                  "\nLongitude :"+addresses.get(0).getLongitude()+"\n Country : "+addresses.get(0).getCountryName()
+                                  +"\n Address :"+addresses.get(0).getAdminArea()+", "+addresses.get(0).getAddressLine(0)+" https://maps.google.com/?q= "+addresses.get(0).getLatitude()+","+addresses.get(0).getLongitude();
+                           current_user=firebaseAuth.getCurrentUser().getEmail();
 
-                        AlertDialog.Builder message_dialoq =new AlertDialog.Builder(getApplicationContext());
+                        AlertDialog.Builder message_dialoq =new AlertDialog.Builder(DashBoard.this);
                         message_dialoq.setTitle("Emergency Notification");
                         message_dialoq.setMessage("Are you really in trouble send alert to your primary contacts?");
                         message_dialoq.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -360,24 +379,55 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 // Fetch all emergency contact for the current user from database
+                                reference=rootNode.getReference("Guardian");
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+
+                                            GuardianPojo guardianPojo=dataSnapshot.getValue(GuardianPojo.class);
+                                         if(current_user.equalsIgnoreCase(guardianPojo.getPersonEmail())){
+
+                                                number=guardianPojo.getGuardianPhone();
+
+                                                // send sms
+
+                                                try {
+
+                                                  SmsManager smsManager=SmsManager.getDefault();
+                                                    smsManager.sendTextMessage(number,null,""+link,null,null);
+                                                    Toast.makeText(getApplicationContext(), "Sent", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                                catch (Exception e){
+                                                    Toast.makeText(getApplicationContext(), "Not sent "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+
+
+                                            }
+
+
+
+                                        }
+
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(getApplicationContext(), "Error occured", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                });
 
                                 // Send SMS
 
                             }
                         });
-
-
-                       // Toast.makeText(getApplicationContext(), "email "+current_user, Toast.LENGTH_SHORT).show();
-
+                        message_dialoq.show();
 
 
 
-
-
-
-                         /* Toast.makeText(getApplicationContext(), "Latitude "+addresses.get(0).getLatitude()+"" +
-                                  "\nLongitude :"+addresses.get(0).getLongitude()+"\n Country : "+addresses.get(0).getCountryName()
-                                  +"\n Address :"+addresses.get(0).getAdminArea()+", "+addresses.get(0).getAddressLine(0)+" https://maps.google.com/?q= "+addresses.get(0).getLatitude()+","+addresses.get(0).getLongitude(), Toast.LENGTH_SHORT).show();*/
                       } catch (IOException e) {
                           e.printStackTrace();
                       }
