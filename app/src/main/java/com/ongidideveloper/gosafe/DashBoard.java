@@ -378,9 +378,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         message_dialoq.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                // Fetch all emergency contact for the current user from database
+                                // Send information to guardian Contacts
                                 reference=rootNode.getReference("Guardian");
-                                reference.addValueEventListener(new ValueEventListener() {
+                              /*  reference.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         for(DataSnapshot dataSnapshot:snapshot.getChildren()){
@@ -396,7 +396,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
                                                   SmsManager smsManager=SmsManager.getDefault();
                                                     smsManager.sendTextMessage(number,null,""+link,null,null);
-                                                    Toast.makeText(getApplicationContext(), "Sent", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(getApplicationContext(), "Notification message sent to Guardian Successfully\n sending to nearest police station", Toast.LENGTH_SHORT).show();
 
                                                 }
                                                 catch (Exception e){
@@ -418,9 +418,54 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                                         Toast.makeText(getApplicationContext(), "Error occured", Toast.LENGTH_SHORT).show();
 
                                     }
+                                });*/
+
+                                // Send information to nearest Police stations
+
+                                reference=rootNode.getReference("Police");
+
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                        for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                                            Police police=dataSnapshot.getValue(Police.class);
+
+                                            police_town=police.getLocation();
+                                            String[] str=police_town.split(" ");
+                                            String[] county=country_admin_name.split(" ");
+                                            number=police.getEmergency_contacts();
+
+                                           if(county[0].equalsIgnoreCase(str[0]))
+                                            {
+                                               // send sms
+
+                                                String police_text="It seems an Accident has occured around following location\n";
+
+                                                String action="Please take an immediate action to rescue the victims \n. Regards\n\n Gosafe App";
+
+
+
+                                                SmsManager smsManager=SmsManager.getDefault();
+                                                smsManager.sendTextMessage(number,null,""+link,null,null);
+                                                Toast.makeText(getApplicationContext(), "Notification message sent to nearest police station \n sending to nearest Hospital", Toast.LENGTH_SHORT).show();
+
+                                            }
+
+                                        }
+
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
                                 });
 
-                                // Send SMS
+
+
+
 
                             }
                         });
