@@ -528,7 +528,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
                                 Victim victim=new Victim(latitude,longitude,link,address_line,country_admin_name,strDate);
 
-                                reference.child(country_name).setValue(victim).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                reference.child(strDate).setValue(victim).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();

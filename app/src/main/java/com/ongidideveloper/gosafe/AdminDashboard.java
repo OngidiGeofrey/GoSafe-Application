@@ -203,6 +203,28 @@ public class AdminDashboard extends AppCompatActivity implements
 
             //log out user
 
+            AlertDialog.Builder alert=new AlertDialog.Builder(AdminDashboard.this);
+            alert.setTitle("End Session");
+            alert.setMessage("Are you sure you want to log out?");
+            alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // dismiss
+
+                }
+            });
+
+            alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(getApplicationContext(),Login.class));
+
+                }
+            });
+
+
 
 
         }
