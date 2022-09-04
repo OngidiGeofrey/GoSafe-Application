@@ -456,7 +456,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 
                                                 SmsManager smsManager=SmsManager.getDefault();
-                                                smsManager.sendTextMessage(number,null,""+link,null,null);
+                                                smsManager.sendTextMessage(number,null,"It seems an Accident has " +
+                                                        "occured around following location\n"+link,null,null);
                                                 Toast.makeText(getApplicationContext(), "Notification message sent to nearest police station \n sending to nearest Hospital", Toast.LENGTH_SHORT).show();
 
                                             }
