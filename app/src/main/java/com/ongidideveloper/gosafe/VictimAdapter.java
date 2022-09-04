@@ -24,15 +24,15 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimAdapter.MyViewHold
 
     @NonNull
     @Override
-    public VictimAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(R.layout.victim_card_view,parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VictimAdapter.MyViewHolder holder, int position) {
-     Victim victim=list.get(position);
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
+       Victim victim=list.get(position);
         holder.address_line.setText(victim.getAddressLine());
         holder.link.setText(victim.getLink());
         holder.county.setText(victim.getCounty());
@@ -40,16 +40,17 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimAdapter.MyViewHold
 
     }
 
-
-
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView address_line,link,county,date;
+    public  static class MyViewHolder extends RecyclerView.ViewHolder{
+
         CardView cardView;
+
+        TextView address_line,link,county,date;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -57,6 +58,8 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimAdapter.MyViewHold
             link=itemView.findViewById(R.id.victim_location);
             county=itemView.findViewById(R.id.victim_contact_list);
             date=itemView.findViewById(R.id.victim_date);
+
+
         }
     }
 }

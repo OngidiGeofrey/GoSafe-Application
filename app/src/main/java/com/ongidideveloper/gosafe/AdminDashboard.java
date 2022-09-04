@@ -379,7 +379,7 @@ public class AdminDashboard extends AppCompatActivity implements
         hospital_phone_layout=findViewById(R.id.txt_hospital_phonenumber_layout);
 
         editText_hospital_name =findViewById(R.id.txt_hospital_name);
-        editText_hospital_town=findViewById(R.id.txt_hospital_phone);
+        editText_hospital_town=findViewById(R.id.txt_hospital_location);
         editText_hospital_phone=findViewById(R.id.txt_hospital_phone);
 
         String hospital_name=editText_hospital_name.getText().toString().toUpperCase().trim();
