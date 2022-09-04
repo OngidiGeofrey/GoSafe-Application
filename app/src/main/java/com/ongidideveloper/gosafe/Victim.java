@@ -1,19 +1,36 @@
 package com.ongidideveloper.gosafe;
 
 public class Victim {
-
-    private String  link,addressLine, County;
     private double latitude, longitude;
+    private String  link,addressLine, County,date;
+
 
     public Victim() {
     }
 
-    public Victim(double latitude, double longitude, String link, String addressLine, String county) {
+    public Victim(double latitude, double longitude, String link, String addressLine, String county, String date) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.link = link;
         this.addressLine = addressLine;
         County = county;
+        this.date = date;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public String getLink() {
@@ -40,19 +57,11 @@ public class Victim {
         County = county;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public String getDate() {
+        return date;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setDate(String date) {
+        this.date = date;
     }
 }

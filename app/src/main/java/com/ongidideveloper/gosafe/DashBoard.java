@@ -59,6 +59,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -516,10 +520,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
                                 // save details of victim and the location to firebase
                                 reference=rootNode.getReference("Victim");
+                                Date currentTime = Calendar.getInstance().getTime();
+                                DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                                String strDate = dateFormat.format(currentTime);
 
 
 
-                                Victim victim=new Victim(latitude,longitude,link,address_line,country_admin_name);
+                                Victim victim=new Victim(latitude,longitude,link,address_line,country_admin_name,strDate);
 
                                 reference.child(country_name).setValue(victim).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
