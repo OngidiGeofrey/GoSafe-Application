@@ -3,6 +3,9 @@ package com.ongidideveloper.gosafe;
 public class User {
     private String name,phone_number,email_address;
 
+    public User() {
+    }
+
     public User(String name, String phone_number, String email_address) {
         this.name = name;
         this.phone_number = phone_number;

@@ -4,10 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/drawable/background.xml" value="0.11041666666666666" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/admin_add_user_fragment.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/admin_view_police_station.xml" value="0.1" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/admin_view_registered_user.xml" value="0.1" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/admin_view_victims.xml" value="0.1" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/cardview_user.xml" value="0.1" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/fragment_help.xml" value="0.11041666666666666" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/fragment_home.xml" value="0.11041666666666666" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/fragment_report.xml" value="0.11041666666666666" />
+        <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/fragment_share_app.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/hospital_card_view.xml" value="0.10364583333333334" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe App/GoSafe-Application/app/src/main/res/layout/victim_card_view.xml" value="0.25" />
         <entry key="..\:/Users/Mr. ONGIDI/AndroidStudioProjects/GoSafe-Application/app/src/main/res/drawable/card_view_background.xml" value="0.2351851851851852" />

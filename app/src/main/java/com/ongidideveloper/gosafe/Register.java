@@ -183,6 +183,7 @@ public class Register extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void unused) {
 
+                                       
                                         Toast.makeText(getApplicationContext(), "Account created successfully. Click the verification link sent to your Email to verify account", Toast.LENGTH_LONG).show();
                                         startActivity(new Intent(getApplicationContext(),Login.class));
 
